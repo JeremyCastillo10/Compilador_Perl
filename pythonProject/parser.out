@@ -1,0 +1,359 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ABS
+    ARROW
+    CHOP
+    CHOWN
+    CLOSE
+    CMP
+    COLON
+    COMMENT
+    COMPLEMENT
+    DECREMENTO
+    DEFINED
+    DELETE
+    DIE
+    DISTINT
+    DOLLARDOLLAR
+    DOT
+    EACH
+    EOF
+    EVAL
+    EXEC
+    EXIT
+    EXP
+    EXPREGULAR
+    FILENO
+    FORK
+    GOTO
+    GREATERGREATER
+    GUIONDOWN
+    HEX
+    INCREMENTO
+    INDEX
+    INT
+    INTERROGATION
+    JOIN
+    KEYS
+    LAST
+    LENGTH
+    LESSLESS
+    LOCAL
+    LOG
+    MKDIR
+    NEXT
+    NOTS
+    OCT
+    OPEN
+    ORBW
+    PACK
+    PLUSGREATER
+    PLUSLESS
+    POP
+    POSTINDEX
+    PREINDEX
+    PUSH
+    RAND
+    READ
+    REFERENCE
+    REFERENCIALISTA
+    REFERENCIAS
+    RENAME
+    RETURN
+    REVERSE
+    RINDEX
+    RMDIR
+    SEEK
+    SELECT
+    SHIFT
+    SIN
+    SLEEP
+    SORT
+    SPLIT
+    SQRT
+    SUBSTR
+    SYSTEM
+    TELL
+    UNLESS
+    UNSHIFT
+    UNTIL
+    VALUES
+    WRITE
+    XOR
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> declaration_list
+Rule 2     declaration_list -> declaration declaration_list
+Rule 3     declaration_list -> declaration
+Rule 4     declaration -> header_declaration
+Rule 5     declaration -> print
+Rule 6     declaration -> var_declaration
+Rule 7     declaration -> sentencia_if
+Rule 8     declaration -> function_declaration
+Rule 9     declaration -> call_function SEMICOLON
+Rule 10    declaration -> E SEMICOLON
+Rule 11    declaration -> ciclos
+Rule 12    header_declaration -> USE ID SEMICOLON
+Rule 13    header_declaration -> REQUIRE ID SEMICOLON
+Rule 14    var_declaration -> PESOS ID SEMICOLON
+Rule 15    var_declaration -> MY PESOS ID SEMICOLON
+Rule 16    var_declaration -> PESOS ID EQUAL E SEMICOLON
+Rule 17    var_declaration -> PESOS ID EQUAL call_function SEMICOLON
+Rule 18    var_declaration -> PESOS ID incdec SEMICOLON
+Rule 19    var_declaration -> MY PESOS ID EQUAL typevar SEMICOLON
+Rule 20    var_declaration -> PESOS ID EQUAL typevar SEMICOLON
+Rule 21    var_declaration -> ARROBA ID SEMICOLON
+Rule 22    var_declaration -> ARROBA ID EQUAL LPAREN lista RPAREN SEMICOLON
+Rule 23    var_declaration -> ARROBA ID EQUAL ARROBA ID SEMICOLON
+Rule 24    var_declaration -> PORCENTAJE ID SEMICOLON
+Rule 25    var_declaration -> PORCENTAJE ID EQUAL LBLOCK lista1 RBLOCK SEMICOLON
+Rule 26    var_declaration -> PORCENTAJE ID EQUAL LPAREN lista1 RPAREN SEMICOLON
+Rule 27    var_declaration -> PORCENTAJE ID EQUAL LPAREN lista2 RPAREN SEMICOLON
+Rule 28    var_declaration -> PORCENTAJE ID EQUAL PORCENTAJE ID SEMICOLON
+Rule 29    lista2 -> typevar COMMA typevar COMMA lista2
+Rule 30    lista2 -> typevar COMMA LPAREN lista RPAREN COMMA lista2
+Rule 31    lista2 -> typevar COMMA LBRACKET lista RBRACKET COMMA lista2
+Rule 32    lista2 -> typevar COMMA typevar
+Rule 33    lista2 -> typevar COMMA LPAREN lista RPAREN
+Rule 34    lista2 -> typevar COMMA LBRACKET lista RBRACKET
+Rule 35    lista2 -> ID COMMA typevar COMMA lista2
+Rule 36    lista2 -> ID COMMA LPAREN lista RPAREN COMMA lista2
+Rule 37    lista2 -> ID COMMA LBRACKET lista RBRACKET COMMA lista2
+Rule 38    lista2 -> ID COMMA typevar
+Rule 39    lista2 -> ID COMMA LPAREN lista RPAREN
+Rule 40    lista2 -> ID COMMA LBRACKET lista RBRACKET
+Rule 41    lista1 -> typevar EQUALGREATER typevar COMMA lista1
+Rule 42    lista1 -> typevar EQUALGREATER LPAREN lista RPAREN COMMA lista1
+Rule 43    lista1 -> typevar EQUALGREATER LBRACKET lista RBRACKET COMMA lista1
+Rule 44    lista1 -> typevar EQUALGREATER typevar
+Rule 45    lista1 -> typevar EQUALGREATER LPAREN lista RPAREN
+Rule 46    lista1 -> typevar EQUALGREATER LBRACKET lista RBRACKET
+Rule 47    lista1 -> ID EQUALGREATER typevar COMMA lista1
+Rule 48    lista1 -> ID EQUALGREATER LPAREN lista RPAREN COMMA lista1
+Rule 49    lista1 -> ID EQUALGREATER LBRACKET lista RBRACKET COMMA lista1
+Rule 50    lista1 -> ID EQUALGREATER typevar
+Rule 51    lista1 -> ID EQUALGREATER LPAREN lista RPAREN
+Rule 52    lista1 -> ID EQUALGREATER LBRACKET lista RBRACKET
+Rule 53    lista -> typevar COMMA lista
+Rule 54    lista -> typevar
+Rule 55    typevar -> CADENA
+Rule 56    typevar -> CADENAA
+Rule 57    typevar -> ENTERO
+Rule 58    typevar -> OCTAL
+Rule 59    typevar -> HEXADECIMAL
+Rule 60    E -> E PLUS T
+Rule 61    E -> E MINUS T
+Rule 62    E -> T
+Rule 63    T -> T TIMES F
+Rule 64    T -> T DIVIDE F
+Rule 65    T -> F
+Rule 66    F -> PESOS ID
+Rule 67    F -> PESOS ID LBRACKET ENTERO RBRACKET
+Rule 68    F -> ENTERO
+Rule 69    F -> PESOS ID LBLOCK typevar RBLOCK
+Rule 70    F -> LPAREN E RPAREN
+Rule 71    ciclos -> FOR LPAREN sent_for SEMICOLON cond SEMICOLON PESOS ID incdec RPAREN LBLOCK declaration_list RBLOCK
+Rule 72    ciclos -> FOREACH PESOS ID LPAREN ARROBA ID RPAREN LBLOCK declaration_list RBLOCK
+Rule 73    ciclos -> WHILE LPAREN cond RPAREN LBLOCK declaration_list RBLOCK
+Rule 74    sent_for -> PESOS ID
+Rule 75    sent_for -> PESOS ID EQUAL ENTERO
+Rule 76    sent_for -> MY PESOS ID EQUAL ENTERO
+Rule 77    sent_for -> MY PESOS ID EQUAL ENTERO COMMA sent_for
+Rule 78    sent_for -> PESOS ID EQUAL ENTERO COMMA sent_for
+Rule 79    log -> LESS
+Rule 80    log -> GREATER
+Rule 81    log -> ISEQUAL
+Rule 82    log -> ISEQUAL_STRING
+Rule 83    log -> LESSEQUAL
+Rule 84    log -> GREATEREQUAL
+Rule 85    log -> DEQUAL
+Rule 86    log -> AND
+Rule 87    log -> ANDS
+Rule 88    log -> ORS
+Rule 89    log -> OR
+Rule 90    type -> typevar
+Rule 91    type -> var_declaration_gen
+Rule 92    cond -> type
+Rule 93    cond -> cond log cond
+Rule 94    cond -> NOT cond
+Rule 95    cond -> LPAREN type RPAREN
+Rule 96    cond -> LPAREN cond RPAREN
+Rule 97    incdec -> PLUSPLUS
+Rule 98    incdec -> MINUSMINUS
+Rule 99    print -> PRINT arg SEMICOLON
+Rule 100   print -> PRINT LPAREN arg RPAREN SEMICOLON
+Rule 101   var_declaration_gen -> PESOS ID
+Rule 102   var_declaration_gen -> PESOS ID LBRACKET ENTERO RBRACKET
+Rule 103   var_declaration_gen -> PESOS ID LBLOCK typevar RBLOCK
+Rule 104   var_declaration_gen -> PESOS ID LBLOCK ID RBLOCK
+Rule 105   sentencia_if -> IF LPAREN cond RPAREN LBLOCK declaration_list RBLOCK
+Rule 106   sentencia_if -> IF LPAREN cond RPAREN LBLOCK declaration_list RBLOCK ELSE LBLOCK declaration_list RBLOCK
+Rule 107   sentencia_if -> IF LPAREN cond RPAREN LBLOCK declaration_list RBLOCK ELSIF LPAREN cond RPAREN LBLOCK declaration_list RBLOCK
+Rule 108   function_declaration -> SUB ID LBLOCK declaration_list RBLOCK
+Rule 109   call_function -> ANDBW ID
+Rule 110   call_function -> ANDBW ID LPAREN arg RPAREN
+
+Terminals, with rules where they appear
+
+ABS                  : 
+AND                  : 86
+ANDBW                : 109 110
+ANDS                 : 87
+ARROBA               : 21 22 23 23 72
+ARROW                : 
+CADENA               : 55
+CADENAA              : 56
+CHOP                 : 
+CHOWN                : 
+CLOSE                : 
+CMP                  : 
+COLON                : 
+COMMA                : 29 29 30 30 31 31 32 33 34 35 35 36 36 37 37 38 39 40 41 42 43 47 48 49 53 77 78
+COMMENT              : 
+COMPLEMENT           : 
+DECREMENTO           : 
+DEFINED              : 
+DELETE               : 
+DEQUAL               : 85
+DIE                  : 
+DISTINT              : 
+DIVIDE               : 64
+DOLLARDOLLAR         : 
+DOT                  : 
+EACH                 : 
+ELSE                 : 106
+ELSIF                : 107
+ENTERO               : 57 67 68 75 76 77 78 102
+EOF                  : 
+EQUAL                : 16 17 19 20 22 23 25 26 27 28 75 76 77 78
+EQUALGREATER         : 41 42 43 44 45 46 47 48 49 50 51 52
+EVAL                 : 
+EXEC                 : 
+EXIT                 : 
+EXP                  : 
+EXPREGULAR           : 
+FILENO               : 
+FOR                  : 71
+FOREACH              : 72
+FORK                 : 
+GOTO                 : 
+GREATER              : 80
+GREATEREQUAL         : 84
+GREATERGREATER       : 
+GUIONDOWN            : 
+HEX                  : 
+HEXADECIMAL          : 59
+ID                   : 12 13 14 15 16 17 18 19 20 21 22 23 23 24 25 26 27 28 28 35 36 37 38 39 40 47 48 49 50 51 52 66 67 69 71 72 72 74 75 76 77 78 101 102 103 104 104 108 109 110
+IF                   : 105 106 107
+INCREMENTO           : 
+INDEX                : 
+INT                  : 
+INTERROGATION        : 
+ISEQUAL              : 81
+ISEQUAL_STRING       : 82
+JOIN                 : 
+KEYS                 : 
+LAST                 : 
+LBLOCK               : 25 69 71 72 73 103 104 105 106 106 107 107 108
+LBRACKET             : 31 34 37 40 43 46 49 52 67 102
+LENGTH               : 
+LESS                 : 79
+LESSEQUAL            : 83
+LESSLESS             : 
+LOCAL                : 
+LOG                  : 
+LPAREN               : 22 26 27 30 33 36 39 42 45 48 51 70 71 72 73 95 96 100 105 106 107 107 110
+MINUS                : 61
+MINUSMINUS           : 98
+MKDIR                : 
+MY                   : 15 19 76 77
+NEXT                 : 
+NOT                  : 94
+NOTS                 : 
+OCT                  : 
+OCTAL                : 58
+OPEN                 : 
+OR                   : 89
+ORBW                 : 
+ORS                  : 88
+PACK                 : 
+PESOS                : 14 15 16 17 18 19 20 66 67 69 71 72 74 75 76 77 78 101 102 103 104
+PLUS                 : 60
+PLUSGREATER          : 
+PLUSLESS             : 
+PLUSPLUS             : 97
+POP                  : 
+PORCENTAJE           : 24 25 26 27 28 28
+POSTINDEX            : 
+PREINDEX             : 
+PRINT                : 99 100
+PUSH                 : 
+RAND                 : 
+RBLOCK               : 25 69 71 72 73 103 104 105 106 106 107 107 108
+RBRACKET             : 31 34 37 40 43 46 49 52 67 102
+READ                 : 
+REFERENCE            : 
+REFERENCIALISTA      : 
+REFERENCIAS          : 
+RENAME               : 
+REQUIRE              : 13
+RETURN               : 
+REVERSE              : 
+RINDEX               : 
+RMDIR                : 
+RPAREN               : 22 26 27 30 33 36 39 42 45 48 51 70 71 72 73 95 96 100 105 106 107 107 110
+SEEK                 : 
+SELECT               : 
+SEMICOLON            : 9 10 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 71 71 99 100
+SHIFT                : 
+SIN                  : 
+SLEEP                : 
+SORT                 : 
+SPLIT                : 
+SQRT                 : 
+SUB                  : 108
+SUBSTR               : 
+SYSTEM               : 
+TELL                 : 
+TIMES                : 63
+UNLESS               : 
+UNSHIFT              : 
+UNTIL                : 
+USE                  : 12
+VALUES               : 
+WHILE                : 73
+WRITE                : 
+XOR                  : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+E                    : 10 16 60 61 70
+F                    : 63 64 65
+T                    : 60 61 62 63 64
+arg                  : 99 100 110
+call_function        : 9 17
+ciclos               : 11
+cond                 : 71 73 93 93 94 96 105 106 107 107
+declaration          : 2 3
+declaration_list     : 1 2 71 72 73 105 106 106 107 107 108
+function_declaration : 8
+header_declaration   : 4
+incdec               : 18 71
+lista                : 22 30 31 33 34 36 37 39 40 42 43 45 46 48 49 51 52 53
+lista1               : 25 26 41 42 43 47 48 49
+lista2               : 27 29 30 31 35 36 37
+log                  : 93
+print                : 5
+program              : 0
+sent_for             : 71 77 78
+sentencia_if         : 7
+type                 : 92 95
+typevar              : 19 20 29 29 30 31 32 32 33 34 35 38 41 41 42 43 44 44 45 46 47 50 53 54 69 90 103
+var_declaration      : 6
+var_declaration_gen  : 91
+
